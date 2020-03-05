@@ -1,6 +1,11 @@
 class LikesController < ApplicationController
   before_action :require_user_logged_in
   
+  def index
+    @user = current_user
+    @likes = Likes.where(user_id: @user.id).all
+  end
+  
   def create
     user = current_user
     micropost = Micropost.find(params[:micropost_id])

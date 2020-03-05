@@ -50,4 +50,8 @@ class User < ApplicationRecord
     likings.include?(micropost)
   end
   
+  def likes_microposts
+    Micropost.where(micropost_id: self.like_ids)
+  end
+  
 end
